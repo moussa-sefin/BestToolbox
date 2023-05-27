@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+
+
 
 class Tool(models.Model):
     name = models.CharField(max_length=128)
@@ -8,8 +9,12 @@ class Tool(models.Model):
     category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True)
     tag = models.ForeignKey("Tag", on_delete=models.SET_NULL, null=True)
     download_link = models.URLField(max_length=200, default='https://www.example.com')
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     license = models.CharField(max_length=100)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Rating(models.Model):
@@ -17,17 +22,30 @@ class Rating(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     value = models.PositiveSmallIntegerField()
 
+    def __str__(self):
+        return str(self.value)
+
 class Category(models.Model):
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Favorite(models.Model):
     user =  models.ForeignKey(User, on_delete=models.CASCADE)
     tool =  models.ForeignKey(Tool, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.tool.name
+    
 
 
 
@@ -35,14 +53,22 @@ class Favorite(models.Model):
 class History(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.tool.name
 
 
 class Review(models.Model):
+    
     tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.ForeignKey(Rating, on_delete=models.CASCADE , default=0)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.content
 
 # class User(models.Model):
 #     username = models.CharField(max_length=120)
