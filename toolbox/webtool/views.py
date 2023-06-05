@@ -29,7 +29,16 @@ class AddToFavolite(View):
         success_url = reverse_lazy('home')
         user = request.user
         tool = Tool.objects.get(id=pk)
-        favolite = Favorite.objects.create(user=user, tool=tool)
-        favolite.save()
-        print("added")
+        if Favorite.objects.filter(tool=tool, user=user).exists():
+            print("not Added")
+        else:
+            favolite = Favorite.objects.create(user=user, tool=tool)
+            favolite.save()
+            print("added")
         return redirect(success_url)
+    
+def removeFromFavolite(request, pk):
+    success_url = reverse_lazy('home')
+    favorite = Favorite.objects.get(id=pk)
+    favorite.delete()
+    return redirect(success_url)
