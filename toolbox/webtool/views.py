@@ -8,12 +8,19 @@ from django.urls import reverse_lazy
 
 def home_for_anonymouse_user(request):
     tools = Tool.objects.all()
-    user = request.user
-    favorites = Favorite.objects.filter(user=user)
+    favorites = ""
     categories = Category.objects.all()
-    reviews = Review.objects.filter(user=user) 
+    reviews = ""
     ctx = {"tools":tools, "favorites":favorites, "categories":categories, "reviews":reviews}
-    return render(request, "webtool/index.html", ctx)
+    return render(request, "webtool/anonymous_user_index.html", ctx)
+
+def tool_detail_for_anonymous_user(request, pk):
+    tool = get_object_or_404(Tool, id=pk)
+    reviews = ""
+    favorites = ""
+    categories = Category.objects.all()
+    ctx = {'tool': tool, "favorites":favorites, "categories":categories, "reviews":reviews}
+    return render(request, 'webtool/tool_detail_for_anonymous_user.html', ctx)
 
 def home(request):
     tools = Tool.objects.all()

@@ -1,0 +1,93 @@
+{% extends 'webtool/base.html' %}
+
+{% block content %}
+
+{% include 'webtool/nav.html' %}
+<div class="search">
+    <!-- <span>Search</span> -->
+    <input type="search" name="" id="" placeholder="Search">
+</div>
+
+
+<div class="divnin">
+    <div class="div-category" style="overflow-y: scroll;">
+        <h3>Categories</h3>
+        {%if categories %}
+        {%for category in categories %}
+        <p> <a href="">{{category.name}}</a> </p>
+
+        {%endfor%}
+        {%else%}
+        {%endif%}
+
+    </div>
+    <div class="div-tool" style="overflow-y: scroll;">
+        <h3>Tools</h3>
+        {%if tools %}
+        
+        {% for tool in tools%}
+        <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
+        
+        <span>[<a href="{% url 'AddToFavolite' tool.id%}">Add To favorite</a>]</span>
+          
+        <div style="display: inline-block;">
+            
+        </div>
+
+
+        <p><a href="">{{tool.description}} Readmore...</a>
+            <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
+        </p>
+        <hr>
+        {% endfor%}
+        
+
+        {%endif%}
+        
+    </div>
+
+
+    <div class="div-favolite" style="overflow-y: scroll;">
+        <h3>Favorites</h3>
+        {%if favorites %}
+        {% for favorite in favorites %}
+        <p> <a href="">{{favorite.tool}}</a>[<a href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
+        {%endfor%}
+        {%else%}
+        <p>no favorites </p>
+        {% endif %}
+    </div>
+</div>
+<div>
+    <hr style="width: 278px; position: absolute; left: 0; top: 35em; border: 1px solid rgb(179, 179, 179);">
+</div>
+<div>
+    <hr style="width: 970px; position: absolute; right: 0; top:auto; border: 1px solid rgb(179, 179, 179);">
+</div>
+
+<div class="container2">
+    <div class="div-history">
+        <h3>History</h3>
+        <p> <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> </p>
+        <p> <a href="">Temporibus, perferendis illo repellendus assumenda atque</a> </p>
+        <p> <a href="">dolorum sint voluptas quisquam quam quasi accusantium</a> </p>
+        <p><a href="">suscipit quae soluta doloribus voluptates</a> </p>
+        <p> <a href="">ea enim provident consectetur</a> </p>
+    </div>
+    <div class="div-review" style="overflow: scroll;">
+        <h3>Review </h3>
+        {%if reviews %}
+        {%for review in reviews%}
+        <p> <a href=""><span class="reviewer-name">{{review.user}}</span> reviewed your tool <span
+                    class="tool-name">{{review.tool}}</span> and gave it a <span class="rating">{{review.rating}}-star
+                    rating</span></a></p>
+        {%endfor%}
+        {%else%}
+        <p>no reviews</p>
+        {%endif%}
+
+
+    </div>
+</div>
+
+{% endblock %}

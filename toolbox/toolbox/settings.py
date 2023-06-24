@@ -128,3 +128,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATIC_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+#LOGIN_URL = 'home'
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home_for_anonymouse_user" 
