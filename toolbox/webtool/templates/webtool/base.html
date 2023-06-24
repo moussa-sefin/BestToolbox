@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -6,145 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-
-    <style>
-        /* Reset default styles for the menu */
-        ul.menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        /* Style for the menu items */
-        ul.menu li {
-            display: inline-block;
-
-
-        }
-
-
-
-
-
-
-
-        /* Container Styles */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-
-
-        .divnin {
-            width: 100%;
-            height: auto;
-            /* border: 4px solid rgb(179,179,179); */
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .div-category {
-            width: 20%;
-            height: 30em;
-            border: 4px solid rgb(179, 179, 179);
-        }
-
-        .div-tool {
-            width: 50%;
-            height: 30em;
-            border: 4px solid rgb(179, 179, 179);
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .div-tool p {
-            font-size: 14px;
-            line-height: 1.5;
-            color: #333;
-        }
-
-
-        .div-favolite {
-            width: 20%;
-            height: 25em;
-            border: 4px solid rgb(179, 179, 179);
-            margin-top: 35px;
-            position: relative;
-            top: auto;
-
-        }
-
-        .divider {
-            border: 4px solid rgb(179, 179, 179);
-            margin-top: -1px;
-        }
-
-        .search {
-            position: absolute;
-            right: 0;
-            z-index: 1;
-
-
-        }
-
-        .div-history {
-            width: 20%;
-            height: auto;
-            border: 4px solid rgb(179, 179, 179);
-
-        }
-
-        .div-review {
-            width: 40%;
-            height: 15em;
-            border: 4px solid rgb(179, 179, 179);
-        }
-
-        .container2 {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        h3 {
-            color: rgb(83, 54, 54);
-            font-family: monospace;
-            font-size: 14px;
-            line-height: 22px;
-        }
-
-        p {
-            font-family: monospace;
-        }
-
-        small {
-            background-color: lightgray;
-            padding: 3px;
-        }
-
-        .reviewer-name {
-            font-weight: bold;
-            color: #302d2d;
-        }
-
-        .tool-name {
-            font-weight: bold;
-        }
-
-        .rating {
-            font-weight: bold;
-            color: #ffac33;
-            /* adjust the color for ratings as per your design */
-        }
-
-        
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    
 </head>
 
 <body>

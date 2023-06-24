@@ -6,6 +6,15 @@ from django.urls import reverse_lazy
 
 # Create your views here.
 
+def home_for_anonymouse_user(request):
+    tools = Tool.objects.all()
+    user = request.user
+    favorites = Favorite.objects.filter(user=user)
+    categories = Category.objects.all()
+    reviews = Review.objects.filter(user=user) 
+    ctx = {"tools":tools, "favorites":favorites, "categories":categories, "reviews":reviews}
+    return render(request, "webtool/index.html", ctx)
+
 def home(request):
     tools = Tool.objects.all()
     user = request.user

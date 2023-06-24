@@ -2,7 +2,7 @@
 
 {% block navi %}
 
-<nav style="margin-top: 20px;">
+<!-- <nav style="margin-top: 20px; " class="navbar navbar-expand-sm navbar-dark bg-dark">
     <ul class="menu">
         <li><a href="{% url 'home'%}">Home|</a></li>
         <li><a href="#">Tools|</a></li>
@@ -12,10 +12,61 @@
         <li><a href="#">My History|</a></li>
         <li><a href="#">Reviews|</a></li>
         <li><a href="#">User Profile|</a></li>
-        <li><a href="#">Login/Logout|</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#"> Logout</a></li>
         <li><a href="#">Register</a></li>
     </ul>
-</nav>
-<hr class="divider">
+</nav> -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Tools</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Tags</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">My History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">User Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Register</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+<hr class="divider " style="margin-bottom: 4em;">
 
 {%endblock navi %}
