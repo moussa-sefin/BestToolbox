@@ -29,12 +29,13 @@
         {%if tools %}
 
         {% for tool in tools%}
-        <div class="mb-2 " style=" border-top: 1px solid #b3b3b3;
+        <div class="mb-2 " style=" 
+                    border-top: 1px solid #b3b3b3;
                     border-left: 1px solid #b3b3b3;
                     border-right: 1px solid #b3b3b3;
                     border-radius: 5px 5px 0px 0px;
                     padding: 2px 2px 0px 5px;">
-            <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
+            <a href="{% url 'tool_detail_for_anonymous_user' tool.id %}">{{tool}}</a>
 
             <p><a href="">{{tool.description}} Readmore...</a>
                 <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>

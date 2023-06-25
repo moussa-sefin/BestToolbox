@@ -5,9 +5,12 @@
 {% if tool %}
 
 
-<div class="search">
+<div class="search ">
     <!-- <span>Search</span> -->
-    <input type="search" name="" id="" placeholder="Search">
+    <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <!-- <button class="btn btn-primary" type="button">Search</button> -->
+    </form>
 </div>
 
 <div class="divnin">
@@ -34,11 +37,11 @@
                 <small>1 year, 4 months ago</small>)</span>
         </p>
     </div>
-    <div class="div-favolite" style="overflow-y: scroll;">
+    <div class="div-favolite mt-5" style="overflow-y: scroll;">
         <h3>Favorites</h3>
         {%if favorites %}
         {% for favorite in favorites %}
-        <p> <a href="">{{favorite.tool}}</a> </p>
+        <p> <a href="{% url 'tool_detail' favorite.tool.id %}">{{favorite.tool}}</a>[<a href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
         {%endfor%}
         {%else%}
         <p>no favorites </p>

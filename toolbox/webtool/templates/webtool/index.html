@@ -3,11 +3,11 @@
 {% block content %}
 
 {% include 'webtool/nav.html' %}
-<div class="search">
+<div class="search ">
     <!-- <span>Search</span> -->
     <form class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Search">
-        {% comment %} <button class="btn btn-primary" type="button">Search</button> {% endcomment %}
+        <!-- <button class="btn btn-primary" type="button">Search</button> -->
     </form>
 </div>
 
@@ -27,34 +27,33 @@
     <div class="div-tool" style="overflow-y: scroll;">
         <h3>Tools</h3>
         {%if tools %}
-        
+
         {% for tool in tools%}
-        <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
-        
-        <span>[<a href="{% url 'AddToFavolite' tool.id%}">Add To favorite</a>]</span>
-          
-        <div style="display: inline-block;">
-            
+        <div class="mb-2 " style=" 
+                    border-top: 1px solid #b3b3b3;
+                    border-left: 1px solid #b3b3b3;
+                    border-right: 1px solid #b3b3b3;
+                    border-radius: 5px 5px 0px 0px;
+                    padding: 2px 2px 0px 5px;">
+            <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
+
+            <p><a href="">{{tool.description}} Readmore...</a>
+                <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
+            </p>
         </div>
 
-
-        <p><a href="">{{tool.description}} Readmore...</a>
-            <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
-        </p>
-        <hr>
         {% endfor%}
-        
 
         {%endif%}
-        
+
     </div>
 
 
-    <div class="div-favolite" style="overflow-y: scroll;">
+    <div class="div-favolite mt-5" style="overflow-y: scroll;">
         <h3>Favorites</h3>
         {%if favorites %}
         {% for favorite in favorites %}
-        <p> <a href="">{{favorite.tool}}</a>[<a href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
+        <p> <a href="{% url 'tool_detail' favorite.tool.id %}">{{favorite.tool}}</a>[<a href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
         {%endfor%}
         {%else%}
         <p>no favorites </p>
