@@ -3,9 +3,12 @@
 {% block content %}
 
 {% include 'webtool/nav.html' %}
-<div class="search">
+<div class="search ">
     <!-- <span>Search</span> -->
-    <input type="search" name="" id="" placeholder="Search">
+    <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <!-- <button class="btn btn-primary" type="button">Search</button> -->
+      </form>
 </div>
 
 
@@ -26,36 +29,38 @@
         {%if tools %}
         
         {% for tool in tools%}
-        <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
+        <div class="mb-2 " style=" border-top: 1px solid #b3b3b3;
+                    border-left: 1px solid #b3b3b3;
+                    border-right: 1px solid #b3b3b3;
+                    border-radius: 5px 5px 0px 0px;
+                    padding-left: 5px;">
+            <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
         
-        <span>[<a href="{% url 'AddToFavolite' tool.id%}">Add To favorite</a>]</span>
-          
-        <div style="display: inline-block;">
-            
+            <p><a href="">{{tool.description}} Readmore...</a>
+                <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
+            </p>
         </div>
-
-
-        <p><a href="">{{tool.description}} Readmore...</a>
-            <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
-        </p>
-        <hr>
+     
         {% endfor%}
         
-
         {%endif%}
         
     </div>
 
 
-    <div class="div-favolite" style="overflow-y: scroll;">
-        <h3>Favorites</h3>
-        {%if favorites %}
-        {% for favorite in favorites %}
-        <p> <a href="">{{favorite.tool}}</a>[<a href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
-        {%endfor%}
-        {%else%}
-        <p>no favorites </p>
-        {% endif %}
+    <div class="div-favolite mt-5" style="height: auto;">
+        <h1>Signup To My Newsletter</h1>
+      <span>
+        By subscribing, you will get one email every month on tips,
+        tutorials, and resources, to improve your skills as a developer.
+        You'll also get early access to my courses and videos and also access to special bonus most of the time.
+        No spam, unsubscribe at any time.
+      </span>
+      <form class="mt-3">
+        <input class="form-control me-2 mb-2" type="email" placeholder="Your Email">
+        <input class="form-control me-2 mb-2" type="text" placeholder="Your First name">
+        <button class="btn btn-primary" type="button">Subscribe</button> 
+    </form>
     </div>
 </div>
 <div>
@@ -65,7 +70,7 @@
     <hr style="width: 970px; position: absolute; right: 0; top:auto; border: 1px solid rgb(179, 179, 179);">
 </div>
 
-<div class="container2">
+<!-- <div class="container2">
     <div class="div-history">
         <h3>History</h3>
         <p> <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> </p>
@@ -88,6 +93,6 @@
 
 
     </div>
-</div>
+</div> -->
 
 {% endblock %}
