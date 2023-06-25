@@ -8,7 +8,7 @@
     <form class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Search">
         <!-- <button class="btn btn-primary" type="button">Search</button> -->
-      </form>
+    </form>
 </div>
 
 
@@ -27,40 +27,40 @@
     <div class="div-tool" style="overflow-y: scroll;">
         <h3>Tools</h3>
         {%if tools %}
-        
+
         {% for tool in tools%}
         <div class="mb-2 " style=" border-top: 1px solid #b3b3b3;
                     border-left: 1px solid #b3b3b3;
                     border-right: 1px solid #b3b3b3;
                     border-radius: 5px 5px 0px 0px;
-                    padding-left: 5px;">
+                    padding: 2px 2px 0px 5px;">
             <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
-        
+
             <p><a href="">{{tool.description}} Readmore...</a>
                 <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
             </p>
         </div>
-     
+
         {% endfor%}
-        
+
         {%endif%}
-        
+
     </div>
 
 
-    <div class="div-favolite mt-5" style="height: auto;">
+    <div class="div-favolite mt-5" style="height: auto; padding: 2px 2px 2px 5px ;">
         <h1>Signup To My Newsletter</h1>
-      <span>
-        By subscribing, you will get one email every month on tips,
-        tutorials, and resources, to improve your skills as a developer.
-        You'll also get early access to my courses and videos and also access to special bonus most of the time.
-        No spam, unsubscribe at any time.
-      </span>
-      <form class="mt-3">
-        <input class="form-control me-2 mb-2" type="email" placeholder="Your Email">
-        <input class="form-control me-2 mb-2" type="text" placeholder="Your First name">
-        <button class="btn btn-primary" type="button">Subscribe</button> 
-    </form>
+        <span>
+            By subscribing, you will get one email every month on tips,
+            tutorials, and resources, to improve your skills as a developer.
+            You'll also get early access to my courses and videos and also access to special bonus most of the time.
+            No spam, unsubscribe at any time.
+        </span>
+        <form class="mt-3">
+            <input class="form-control me-2 mb-2" type="email" placeholder="Your Email">
+            <input class="form-control me-2 mb-2" type="text" placeholder="Your First name">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+        </form>
     </div>
 </div>
 <div>
