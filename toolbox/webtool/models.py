@@ -9,7 +9,7 @@ class Tool(models.Model):
     category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True)
     tag = models.ForeignKey("Tag", on_delete=models.SET_NULL, null=True)
     download_link = models.URLField(max_length=200, default='https://www.example.com')
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(upload_to='media/images/', null=True, blank=True)
     license = models.CharField(max_length=100)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 

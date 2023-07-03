@@ -24,22 +24,34 @@
         {%endif%}
 
     </div>
-    <div class="div-tool" style="overflow-y: scroll;">
+    <div class="div-tool" style="height: auto;">
         <h3>Tools</h3>
         {%if tools %}
 
         {% for tool in tools%}
-        <div class="mb-2 " style=" 
-                    border-top: 1px solid #b3b3b3;
-                    border-left: 1px solid #b3b3b3;
-                    border-right: 1px solid #b3b3b3;
-                    border-radius: 5px 5px 0px 0px;
-                    padding: 2px 2px 0px 5px;">
-            <a href="{% url 'tool_detail_for_anonymous_user' tool.id %}">{{tool}}</a>
 
-            <p><a href="">{{tool.description}} Readmore...</a>
-                <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
-            </p>
+        <div class="mb-2 " style=" 
+                    border-top: 1px solid #ebebeb;;
+                    border-left: 1px solid #ebebeb;;
+                    border-right: 1px solid #ebebeb;;
+                    border-radius: 5px 5px 0px 0px;
+                    padding: 2px 2px 0px 5px; 
+                    display: flex;
+                    background-color: #fff;
+                    ">
+
+            <div style="margin: 5px 20px 20px 0;">
+                <img src="{{tool.image.url}}" alt="" width="200" height="100">
+
+            </div>
+            <div>
+                <a href="{% url 'tool_detail_for_anonymous_user' tool.id %}">{{tool}}</a>
+                <p>
+                    <span>{{tool.description}} Readmore...</span>
+                    <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
+                </p>
+            </div>
+
         </div>
 
         {% endfor%}
@@ -49,7 +61,7 @@
     </div>
 
 
-    <div class="div-favolite mt-5" style="height: auto; padding: 2px 2px 2px 5px ;">
+    <div class="div-favolite mt-5" style="height: 30em; padding: 2px 2px 2px 5px ;">
         <h1>Signup To My Newsletter</h1>
         <span>
             By subscribing, you will get one email every month on tips,
@@ -95,5 +107,7 @@
 
     </div>
 </div> -->
+
+
 
 {% endblock %}
