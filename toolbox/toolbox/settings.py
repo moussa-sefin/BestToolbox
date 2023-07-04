@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'webtool',
     'bootstrap5',
     'fontawesomefree',
+    'ckeditor',
+    'django_cleanup.apps.CleanupConfig',
+    'django_countries',
+    'contactforms',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,5 @@
 from django.urls import  path
-from .views import home, tool_details, AddToFavolite, removeFromFavolite, home_for_anonymouse_user,tool_detail_for_anonymous_user       
+from .views import Texteditor,home, tool_details, AddToFavolite, removeFromFavolite, home_for_anonymouse_user,tool_detail_for_anonymous_user       
 
 
 urlpatterns = [
@@ -8,6 +8,8 @@ urlpatterns = [
     path("home", home, name='home'),
     path('tool_detail/<int:pk>', tool_details, name='tool_detail'),
     path('add-to-favolite/<int:pk>', AddToFavolite.as_view(), name='AddToFavolite'),
-    path('remove-from-favolite/<int:pk>', removeFromFavolite, name='removeFromVavolite')
+    path('remove-from-favolite/<int:pk>', removeFromFavolite, name='removeFromVavolite'),
 
+    path('editor', Texteditor.as_view(), name='Texteditor'),
+    
 ]

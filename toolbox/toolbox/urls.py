@@ -25,6 +25,7 @@ from django.urls import (
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('contact/', include('contactforms.urls')),
     path("", include("webtool.urls"))
 ]
 if settings.DEBUG:     

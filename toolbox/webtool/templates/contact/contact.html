@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+
+<body>
+    <div class="container mt-5 text-center" style="width: 500px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+
+        <form method="Post">
+            {% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit">Submit</button>
+
+        </form>
+
+    </div>
+</body>
+
+</html>

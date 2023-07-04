@@ -7,6 +7,7 @@ from . models import (Tool,
                       Review, 
                       History, 
                       Category, 
-                      Favorite)
+                      Favorite,
+                      Post)
 
-admin.site.register([Tool, Tag, Rating, Review, History, Category, Favorite])
+admin.site.register([Post,Tool, Tag, Rating, Review, History, Category, Favorite])

@@ -3,6 +3,10 @@ from .models import Tool, Favorite, Category, Review
 from django.views.generic import View
 from django.urls import reverse_lazy
 
+from webtool.forms import PostForm
+from contactforms.views import ContactForm
+from .forms import MyContactForm
+
 
 # Create your views here.
 
@@ -58,3 +62,16 @@ def removeFromFavolite(request, pk):
     favorite = Favorite.objects.get(id=pk)
     favorite.delete()
     return redirect(success_url)
+
+class Texteditor(View):
+    def get(self,request):
+        editor = PostForm()
+        ctx = {'editor': editor}
+        return render(request, 'webtool/editorpage.html', ctx)
+    def post(self, request):
+        pass
+
+class ContactView(ContactForm):
+    form_class = MyContactForm
+    template_name = 'contact.html'
+    success_url = '/thank-you/'
