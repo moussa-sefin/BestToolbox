@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'webtool',
     'bootstrap5',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
