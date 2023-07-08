@@ -11,7 +11,7 @@
     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
-    
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -19,9 +19,13 @@
 </head>
 
 <body style="background-color:#F2F5EA;">
-{% block content %}
+    <div class="container-fluid">
+        {% block content %}
 
-{% endblock content %}
+        {% endblock content %}
+    </div>
+    {% include 'webtool/footer.html' %}
+
 
 
    

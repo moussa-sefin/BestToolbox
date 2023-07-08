@@ -3,6 +3,13 @@
 {% block content %}
 
 {% include 'webtool/nav.html' %}
+<style>
+    @media (max-width: 767.98px) {
+        .border-sm-start-none {
+            border-left: none !important;
+        }
+    }
+</style>
 <div class="search ">
     <!-- <span>Search</span> -->
     <form class="d-flex">
@@ -24,13 +31,17 @@
         {%endif%}
 
     </div>
-    <div class="div-tool" style="height:auto;" >
-        <h3>Tools</h3>
+    <div class="div-tool" style="height:auto; width: 58%;">
+        <div style="display: flex; justify-content: space-between;">
+            <h3>Tools</h3>
+            <a href=""><button type="button" class="btn btn-info">Create Tool</button></a>
+        </div>
+
         {%if tools %}
 
         {% for tool in tools%}
 
-        <div class="mb-2 " style=" 
+        <!-- <div class="mb-2 " style=" 
                     border-top: 1px solid #ebebeb;;
                     border-left: 1px solid #ebebeb;;
                     border-right: 1px solid #ebebeb;;
@@ -48,7 +59,7 @@
                 <a href="{% url 'tool_detail' tool.id %}">{{tool}}</a>
 
                 <p>
-                   <span>{{tool.description}} Readmore...</span> 
+                    <span>{{tool.description}} Readmore...</span>
                     <span>(Posted By {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%} |)</span>
                 </p>
                 <i class="fa-sharp fa-solid fa-heart"></i>
@@ -56,7 +67,67 @@
                 <i class="fa-sharp fa-regular fa-user"></i>
             </div>
 
+        </div> -->
+
+        <div class="container py-0">
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-12 col-xl-10">
+                    <div class="card shadow-0 border rounded-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                        <img src="{{tool.image.url}}" class="w-100" />
+                                        <a href="#!">
+                                            <div class="hover-overlay">
+                                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);">
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <h5><a href="{% url 'tool_detail' tool.id %}">{{tool}}</a></h5>
+                                    <div class="d-flex flex-row">
+                                        <div class="text-danger mb-1 me-2">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <span>310</span>
+                                    </div>
+                                    <div class="mt-1 mb-0 text-muted small">
+                                        <span>PostedBy {%if tool.owner%}{{tool.owner}} {%else%} N/A{%endif%}</span>
+                                        <span class="text-primary"> • </span>
+                                        <span>Light weight</span>
+                                    </div>
+
+                                    <p class="text-truncate mb-4 mb-md-0">
+                                        {{tool.description}}
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                    <div class="d-flex flex-row align-items-center mb-1">
+                                        <h4 class="mb-1 me-1">$13.99</h4>
+                                        <span class="text-danger"><s>$20.99</s></span>
+                                    </div>
+                                    <h6 class="text-success">Free shipping</h6>
+                                    <div class="d-flex flex-column mt-4">
+                                       <a href="{% url 'tool_detail' tool.id %}"><button class="btn btn-primary btn-sm" type="button">Details</button></a> 
+                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                                            Add to wishlist
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         {% endfor%}
 
@@ -69,7 +140,8 @@
         <h3>Favorites</h3>
         {%if favorites %}
         {% for favorite in favorites %}
-        <p> <a href="{% url 'tool_detail' favorite.tool.id %}">{{favorite.tool}}</a>[<a href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
+        <p> <a href="{% url 'tool_detail' favorite.tool.id %}">{{favorite.tool}}</a>[<a
+                href="{% url 'removeFromVavolite' favorite.id %}">Remove</a>] </p>
         {%endfor%}
         {%else%}
         <p>no favorites </p>
@@ -84,7 +156,7 @@
 </div>
 
 <div class="container2">
-    <div class="div-history">
+    <div class=" div-history">
         <h3>History</h3>
         <p> <a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a> </p>
         <p> <a href="">Temporibus, perferendis illo repellendus assumenda atque</a> </p>
@@ -109,5 +181,3 @@
 </div>
 
 {% endblock %}
-
-
