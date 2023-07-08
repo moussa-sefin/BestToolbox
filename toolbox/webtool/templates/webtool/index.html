@@ -116,9 +116,11 @@
                                     <h6 class="text-success">Free shipping</h6>
                                     <div class="d-flex flex-column mt-4">
                                        <a href="{% url 'tool_detail' tool.id %}"><button class="btn btn-primary btn-sm" type="button">Details</button></a> 
+                                       <a href="{%url 'AddToFavolite' tool.id%}">
                                         <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                                            Add to wishlist
+                                            Add to Favorite
                                         </button>
+                                    </a> 
                                     </div>
                                 </div>
                             </div>
@@ -170,7 +172,7 @@
         {%for review in reviews%}
         <p> <a href=""><span class="reviewer-name">{{review.user}}</span> reviewed your tool <span
                     class="tool-name">{{review.tool}}</span> and gave it a <span class="rating">{{review.rating}}-star
-                    rating</span></a></p>
+                    rating</span></a> <h5>message:</h5> {{review.content}}</p>
         {%endfor%}
         {%else%}
         <p>no reviews</p>
