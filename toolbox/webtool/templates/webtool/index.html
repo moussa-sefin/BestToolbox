@@ -7,7 +7,10 @@
     @media (max-width: 767.98px) {
         .border-sm-start-none {
             border-left: none !important;
+
         }
+
+
     }
 </style>
 <div class="search ">
@@ -38,10 +41,11 @@
         </div>
 
         {%if tools %}
+        <div class="container py-0">
+            <div class="row justify-content-center mb-3">
+                {% for tool in tools%}
 
-        {% for tool in tools%}
-
-        <!-- <div class="mb-2 " style=" 
+                <!-- <div class="mb-2 " style=" 
                     border-top: 1px solid #ebebeb;;
                     border-left: 1px solid #ebebeb;;
                     border-right: 1px solid #ebebeb;;
@@ -69,9 +73,7 @@
 
         </div> -->
 
-        <div class="container py-0">
-            <div class="row justify-content-center mb-3">
-                <div class="col-md-12 col-xl-10">
+                <div class="col-md-12 col-xl-10 py-2">
                     <div class="card shadow-0 border rounded-3">
                         <div class="card-body">
                             <div class="row">
@@ -115,23 +117,29 @@
                                     </div>
                                     <h6 class="text-success">Free shipping</h6>
                                     <div class="d-flex flex-column mt-4">
-                                       <a href="{% url 'tool_detail' tool.id %}"><button class="btn btn-primary btn-sm" type="button">Details</button></a> 
-                                       <a href="{%url 'AddToFavolite' tool.id%}">
-                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">
-                                            Add to Favorite
-                                        </button>
-                                    </a> 
+                                        <a href="{% url 'tool_detail' tool.id %}"><button class="btn btn-primary btn-sm"
+                                                type="button">Details</button></a>
+                                        <a href="{%url 'AddToFavolite' tool.id%}">
+                                            <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                                                Add to Favorite
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                {% endfor%}
+
+
             </div>
         </div>
 
 
-        {% endfor%}
+
 
         {%endif%}
 
@@ -171,8 +179,10 @@
         {%if reviews %}
         {%for review in reviews%}
         <p> <a href=""><span class="reviewer-name">{{review.user}}</span> reviewed your tool <span
-                    class="tool-name">{{review.tool}}</span> and gave it a <span class="rating">{{review.rating}}-star
-                    rating</span></a> <h5>message:</h5> {{review.content}}</p>
+                    class="tool-name">{{review.tool}}</span> and gave it a <span class="rating">
+                        <!-- {{review.rating}}-star -->
+                    rating</span></a>
+        <h5>message:</h5> {{review.content}}</p>
         {%endfor%}
         {%else%}
         <p>no reviews</p>

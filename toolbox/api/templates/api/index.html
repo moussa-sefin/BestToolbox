@@ -1,0 +1,136 @@
+<!DOCTYcodeE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewcodeort" content="width=device-width, initial-scale=1.0">
+        <title>IcodeI Documantation</title>
+
+        <style>
+            * {
+                margin: 0px;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: black;
+
+                margin: 40px;
+
+            }
+
+            div {
+                margin-bottom: 30px;
+
+                font-size: medium;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                color: white;
+                border: 1px dotted red
+            }
+            code{
+                font-size: 30px;
+                padding: 10px;
+            }
+            h1{
+                background-color: rgb(230, 98, 98);
+                border-bottom: 1px solid red;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                margin-bottom: 10px;
+                padding: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div>
+        <h1>#Return all tools</h1>
+        <code>codeath('acodei/tools/', views.ToolList.as_view(), name='tool-list'),</code>
+        </div>
+        <div>
+            <h1>#return tools with much key world</h1>
+        <code>
+            codeath('acodei/tools/search/', views.ToolViewSet.as_view({'get': 'list'}), name='tool-search'),
+        </code>
+        </div>
+        <div>
+            <h1># Return Tool detail endcodeoint with the tool's ID</h1>
+            <code>codeath('acodei/tools/<int:codek>/', views.ToolDetailAcodeIView.as_view(), name='tool-detail'),</code>
+        </div>
+        <div>
+            <h1>#authenticated user Return Ratings and reviews of scodeecific Tool</h1>
+            <code>codeath('acodei/tools/<int:codek>/ratings', views.ToolRatingsAndReviewsView.as_view(), name='tool-ratings-and-reviews'),</code>
+        </div>
+        <div>
+            <h1>#authenticated user Give Rate to a Scodeecific Tool value codeassed to the body</h1>
+            <code>codeath('acodei/tools/<int:tool_id>/submit-rating/', views.SubmitRatingView.as_view(), name='submit-rating'),</code>
+
+        </div>
+        <div>
+            <h1>#authenticated Give Review to a Scodeecific Tool content codeassed to the body</h1>
+            <code>codeath('acodei/tools/<int:tool_id>/submit-review/', views.SubmitReviewView.as_view(), name='submit-review'),</code>
+
+        </div>
+        <div>
+            <h1>#authenticated share tool to a single or many user list of user's ids codeassed to the body</h1>
+            <code>codeath('acodei/tools/<int:tool_id>/share/', views.ShareToolView.as_view(), name='share-tool'),</code>
+
+        </div>
+        <div>
+            <h1>#authenticated user Remove SheredTool from a his/her sharedlist Actual ToolId and ToolId in sharedList
+                must be
+                codeassed Rescodeectively
+            </h1>
+            <code>
+            codeath('acodei/tools/<int:tool_id>/share/<int:shared_tool_id>/', views.RemoveSharedToolView.as_view(),
+                name='remove-shared-tool'),
+        </code>
+        </div>
+
+        <div>
+            <h1>#authenticated users to add a tool to their favorites but does not add it if it's already in their
+                favorites</h1>
+            <code>codeath('acodei/tools/<int:tool_id>/add-to-favorites/', views.AddToFavoritesView.as_view(), name='add-to-favorites'),</code>
+        </div>
+        <div>
+            <h1> #allows an authenticated user to get the tools from their favorites</h1>
+            <code>codeath('acodei/favorites/', views.UserFavoritesView.as_view(), name='user-favorites'),</code>
+        </div>
+        <div>
+            <h1>#allows an authenticated user to remove a tool from their favorites</h1>
+            <code>codeath('acodei/favorites/remove/<int:tool_id>/',views.RemoveFavoriteToolView.as_view(), name='remove-favorite-tool'),</code>
+        </div>
+        <div>
+            <h1>#allows an authenticated user to create a new tool</h1>
+            <code>codeath('acodei/tools/create/', views.CreateToolView.as_view(), name='create-tool'),</code>
+        </div>
+        <div>
+            <h1>#allows an authenticated user to delete his/her own tool</h1>
+            <codee>codeath('acodei/tools/<int:tool_id>/delete/', views.DeleteToolView.as_view(),
+                    name='delete_tool'),</code>
+
+        </div>
+        <div>
+            <h1>#allows an authenticated user to ucodedate his/her own tool</h1>
+            <code>codeath('acodei/tools/<int:tool_id>/ucodedate/',views.UcodedateToolView.as_view(), name='ucodedate-tool'),</code>
+
+        </div>
+        <div>
+            <h1>#allows an authenticated user to get Average ratigs of his/her own tools</h1>
+            <code>codeath('acodei/tools/average-ratings/',views.AverageRatingsAndReviewsView.as_view(), name='average_ratings_reviews'),</code>
+        </div>
+        <div>
+            <h1>#allows an authenticated user to get All Tools With Average ratigs</h1>
+            <code>codeath('acodei/tools/average-ratings-all/', views.ToolListWithAverageRatings.as_view(), name='average-ratings-list'),</code>
+        </div>
+
+        <small>codeath('acodei/token/', TokenObtaincodeairView.as_view(), name='token_obtain_codeair'),</small>
+        <small>codeath('acodei/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),</small>
+
+
+        </div>
+    </body>
+
+    </html>

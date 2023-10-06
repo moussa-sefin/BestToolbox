@@ -8,10 +8,15 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
+
 """
 
 from pathlib import Path
 import os
+import datetime
+from rest_framework.pagination import PageNumberPagination
+from api.utils import jwt_response_payload_handler
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +44,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    'webtool',
+
+    
+
+    'rest_framework',
+    'corsheaders',
+    'rest_framework_simplejwt',
+    'api',
+    
+    'django.contrib.humanize',
+    # 'rest_framework_jwt',
+
+
+    # 'webtool',
+
     'bootstrap5',
     'fontawesomefree',
     'ckeditor',
@@ -49,6 +67,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -75,6 +95,71 @@ TEMPLATES = [
         },
     },
 ]
+
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
+    
+    
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework_simplejwt.PageNumberPagination',
+    'PAGE_SIZE': 4,  # Number of items per page
+
+
+}
+
+
+
+
+
+
+SIMPLE_JWT = {
+
+    
+    'JWT_SECRET_KEY': 'insec-185^8c!d1-rp*wmn14z-+uc88@3u7u=hxqrzeg=9xxb4l3bvld',  # Replace with your own secret key
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),  # Adjust as needed
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14),  # Adjust as needed
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    # 'TOKEN_PAYLOAD_HANDLER': jwt_response_payload_handler,
+
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=30),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': datetime.timedelta(days=1),
+    'SLIDING_TOKEN_LIFETIME': datetime.timedelta(days=14),
+    'SLIDING_TOKEN_REFRESH_LIFETIME_GRACE_PERIOD': datetime.timedelta(seconds=30),
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_CLAIM': 'token_type',
+}
+
+
+
+
+CORS_ALLOW_ALL_ORIGINS = False  # Allow specific origins
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:4200',
+    'http://localhost:4200'
+    # Add the URL of your Angular app
+]
+CORS_ALLOW_HEADERS = ['Content-Type', 'Authorization']
+CORS_ALLOW_METHODS = ["*"]
+
+
+
+
+
+
+
+# CORS_ALLOW_ALL_ORIGINS = True
 
 WSGI_APPLICATION = "toolbox.wsgi.application"
 
@@ -137,6 +222,11 @@ STATIC_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+
+
+
 #LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home_for_anonymouse_user" 
+#custom user model
+AUTH_USER_MODEL="api.User"
